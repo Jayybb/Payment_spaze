@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaySpaze</title>
+  <style>
+    body {
+      font-family: 'Outfit', Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
+
+    header {
+      background-color: #004080;
+      padding: 15px 20px;
+      color: #f1f1f1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logout {
+      background: #dd0404;
+      color: #f1f1f1;
+      border: none;
+      padding: 5px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .logout:hover {
+      background: #990000;
+    }
+
+    main {
+      margin-top: 50px;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    main h1 {
+      color: #333;
+      font-size: 2.2em;
+    }
+
+    main p {
+      color: #666;
+      font-size: 1.1em;
+    }
+
+    main button {
+      background-color: #004080;
+      color: #f1f1f1;
+      border: none;
+      padding: 8px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    main button:hover {
+      background-color: #003366;
+    }
+
+    footer {
+      margin-top: 50px;
+      background-color: #333;
+      padding: 10px;
+      font-size: 14px;
+      color: #f1f1f1;
+      text-align: center;
+      border-radius: 0 0 10px 10px;
+    }
+
+    section {
+      margin-top: 30px;
+      padding: 15px;
+      background: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+
+    section h2 {
+      color: #004080;
+      font-size: 1.8em;
+    }
+
+    section p {
+      color: #666;
+      font-size: 1em;
+      line-height: 1.5;
+    }
+
+    .team-member {
+      display: inline-block;
+      width: 180px;
+      margin: 15px;
+      text-align: center;
+    }
+
+    .team-member h3 {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .team-member p {
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>PaySpaze</div>
+    <button class="logout" id="logoutBtn">Logout</button>
+  </header>
+
+  <main>
+    <h1 id="welcomeMessage">Welcome!</h1>
+    <p>Click the button below to complete a payment.</p>
+    <button>Make Payment</button>
+  </main>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>Learn more about PaySpaze.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Get in touch with us for more information.</p>
+  </section>
+
+  <section id="team">
+    <h2>Our Team</h2>
+    <p>Meet the people behind PaySpaze.</p>
+  </section>
+
+  <footer>
+    Copyright © 2024 - All rights reserved by PaySpaze
+  </footer>
+
+  <script>
+    if (!localStorage.getItem("isLoggedIn")) {
+      alert("Please log in first.");
+      window.location.href = "login.html";
+    }
+
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    document.getElementById("welcomeMessage").textContent = `Welcome, ${loggedInUser}!`;
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
